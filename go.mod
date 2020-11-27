@@ -36,12 +36,15 @@ replace (
 
 require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
+	github.com/goccy/go-graphviz v0.0.9 // indirect
 	github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9 // indirect
 	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/gorilla/mux v1.7.3
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
+	github.com/ofabry/go-callvis v0.6.1 // indirect
+	github.com/pkg/browser v0.0.0-20201112035734-206646e67786 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/common v0.7.0 // indirect
 	github.com/prometheus/procfs v0.0.6 // indirect
@@ -53,10 +56,10 @@ require (
 	github.com/stretchr/testify v1.5.1 // indirect
 	github.com/urfave/cli v1.22.2
 	github.com/urfave/cli/v2 v2.1.1
-	golang.org/x/crypto v0.0.0-20200414173820-0848c9571904 // indirect
-	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
-	golang.org/x/sys v0.0.0-20191113165036-4c7a9d0fe056 // indirect
+	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5 // indirect
+	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect
+	golang.org/x/tools v0.0.0-20201117021029-3c3a81204b10 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 	google.golang.org/genproto v0.0.0-20191115194625-c23dd37a84c9 // indirect
 	google.golang.org/grpc v1.27.0 // indirect

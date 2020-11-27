@@ -20,6 +20,7 @@ func newRoleRevision(ctx context.Context, rbac rbac.Interface) *roleRevisionInde
 	return r
 }
 
+// r.roleRevisions: {namespace:kube-system name:extension-apiserver-authentication-reader}, 138
 func (r *roleRevisionIndex) roleRevision(namespace, name string) string {
 	val, _ := r.roleRevisions.Load(roleKey{
 		name:      name,

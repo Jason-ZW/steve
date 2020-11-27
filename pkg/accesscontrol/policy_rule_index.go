@@ -48,6 +48,7 @@ func newPolicyRuleIndex(user bool, revisions *roleRevisionIndex, rbac v1.Interfa
 	return pi
 }
 
+// result: [system:kube-scheduler serviceaccount:kube-system:kube-scheduler]
 func (p *policyRuleIndex) clusterRoleBindingBySubjectIndexer(crb *rbacv1.ClusterRoleBinding) (result []string, err error) {
 	for _, subject := range crb.Subjects {
 		if subject.APIGroup == rbacGroup && subject.Kind == p.kind && crb.RoleRef.Kind == "ClusterRole" {
@@ -60,6 +61,7 @@ func (p *policyRuleIndex) clusterRoleBindingBySubjectIndexer(crb *rbacv1.Cluster
 	return
 }
 
+// result: [system:kube-scheduler serviceaccount:kube-system:kube-scheduler]
 func (p *policyRuleIndex) roleBindingBySubject(rb *rbacv1.RoleBinding) (result []string, err error) {
 	for _, subject := range rb.Subjects {
 		if subject.APIGroup == rbacGroup && subject.Kind == p.kind {
@@ -74,6 +76,7 @@ func (p *policyRuleIndex) roleBindingBySubject(rb *rbacv1.RoleBinding) (result [
 
 var null = []byte{'\x00'}
 
+// subjectName: [admin, system:masters, system:authenticated]
 func (p *policyRuleIndex) addRolesToHash(digest hash.Hash, subjectName string) {
 	for _, crb := range p.getClusterRoleBindings(subjectName) {
 		digest.Write([]byte(crb.RoleRef.Name))
@@ -111,6 +114,7 @@ func (p *policyRuleIndex) get(subjectName string) *AccessSet {
 	return result
 }
 
+// accessSet: &{ID: set:map[{verb:create gr:{Group:authorization.k8s.io Resource:selfsubjectaccessreviews}}:map[{Namespace:* ResourceName:*}:true] {verb:create gr:{Group:authorization.k8s.io Resource:selfsubjectrulesreviews}}:map[{Namespace:* ResourceName:*}:true]]}
 func (p *policyRuleIndex) addAccess(accessSet *AccessSet, namespace string, roleRef rbacv1.RoleRef) {
 	for _, rule := range p.getRules(namespace, roleRef) {
 		for _, group := range rule.APIGroups {
